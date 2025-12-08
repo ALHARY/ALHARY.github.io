@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alhary | Produkte</title>
+  <meta name="description" content="Alhary – smarte Bluetooth-Produkte entwickelt von Schüler:innen der HTL Mössingerstraße in Österreich." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#0f1220;
+      --panel:#131735;
+      --muted:#99a0c2;
+      --text:#e8ebff;
+      --brand:#67b6ff;
+      --brand-2:#7df1c9;
+      --radius-xl:1.25rem;
+      --shadow-md:0 12px 24px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family:Inter,system-ui,sans-serif;
+      background:radial-gradient(1200px 800px at 80% -10%,#1a2150 0%,transparent 55%),
+                 radial-gradient(900px 600px at 0% 0%,#10243e 0%,transparent 45%),
+                 var(--bg);
+      color:var(--text);
+    }
+
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; border-radius:var(--radius-xl); }
+
+    .container { max-width:1200px; margin-inline:auto; padding:0 24px; }
+
+    header {
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(120%) blur(8px);
+      background:linear-gradient(to bottom,rgba(15,18,32,.9),rgba(15,18,32,.65));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav { display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .brand { display:flex; gap:12px; align-items:center; }
+    .logo {
+      width:36px;height:36px;border-radius:12px;
+      background:conic-gradient(from 90deg,var(--brand),var(--brand-2));
+      box-shadow:0 6px 16px rgba(103,182,255,.35);
+    }
+    .brand h1 { font-size:1.15rem; margin:0; font-weight:800; }
+
+    .nav-links { display:flex; gap:20px; align-items:center; }
+    .btn {
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .btn.primary {
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#0b1022;
+      box-shadow:var(--shadow-md);
+    }
+    .btn.primary:hover { transform:translateY(-1px); }
+    .btn.ghost {
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+    }
+    .btn.ghost:hover { background:rgba(255,255,255,.06); }
+
+    main { padding:80px 0; }
+    h2.section-title { font-size:2rem; margin-bottom:20px; }
+    .muted { color:var(--muted); }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
+    }
+    .card {
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius-xl);
+      padding:28px;
+      text-align:center;
+      box-shadow:var(--shadow-md);
+      transition:transform .25s ease;
+    }
+    .card:hover { transform:translateY(-3px); }
+    .card h3 { margin:12px 0 6px; }
+    .price { color:var(--brand); font-weight:700; font-size:1.2rem; }
+
+    footer {
+      padding:36px 0 64px;
+      border-top:1px solid rgba(255,255,255,.06);
+      text-align:center;
+      color:var(--muted);
+      background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+    }
+
+    @media (max-width:600px){
+      h2.section-title{font-size:1.6rem;}
+    }
+
+    /* ---------- Mobile optimierungen ---------- */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .brand {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .brand h1 {
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 48px 0;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  p.muted {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .about-grid,
+  .grid {
+    grid-template-columns: 1fr; /* Karten untereinander */
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 28px 0 48px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Damit der Warenkorb-Zähler nicht überlappt */
+  #cart-count {
+    top: -5px;
+    right: -8px;
+    padding: 1px 5px;
+    font-size: 0.75rem;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+  <div class="container nav">
+    <a class="brand" href="#top">
+      <div class="logo"></div>
+      <h1>Alhary</h1>
+    </a>
+    <nav class="nav-links">
+      <a href="#produkte">Produkte</a>
+      <a href="simpletag.html" class="btn ghost">Simple Tag</a>
+      <a href="about.html" class="btn ghost">Über uns</a>
+
+      <!-- 🛒 Warenkorb-Button-->
+      <a href="shop.html" class="btn ghost" style="position:relative;display:inline-flex;align-items:center;">
+        🛒 
+        <span id="cart-count" style="position:absolute;top:-6px;right:-10px;
+        background:var(--brand-2);color:#0b1022;border-radius:999px;padding:2px 6px;
+        font-size:.8rem;font-weight:700;">0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+  <main class="container" id="produkte">
+    <h2 class="section-title">Unsere Produkte</h2>
+    <p class="muted">Entwickelt von Schüler:innen der HTL Mössingerstraße (Österreich) – smart, nachhaltig, zuverlässig.</p>
+
+    <div class="grid">
+      <div class="card">
+        <img src="simpletag.jpg" alt="Simple Tag Produktbild (Symbolisch)">
+        <h3>Simple Tag</h3>
+        <p class="muted">Der smarte Bluetooth-Tracker, der sich den letzten Ort merkt.</p>
+        <p class="price">€ 14,99</p>
+        <a href="simpletag.html" class="btn primary">Mehr erfahren</a>
+      </div>
+
+      <div class="card">
+        <img src="ladestation.jpg" alt="Ladestation Produktbild (Symbolisch)">
+        <h3>Ladestation</h3>
+        <p class="muted">Nachhaltig nachladen statt Batterien – die perfekte Ergänzung zum Simple Tag.</p>
+        <p class="price">€ 7,99</p>
+        <a href="simpletag.html#nachhaltigkeit" class="btn primary">Mehr erfahren</a>
+      </div>
+    </div>
+  </main>
+
+<footer>
+  <div class="container" style="text-align:center;">
+    <p>© <span id="year"></span> Alhary | Junior Company HTL Mössingerstraße | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="datenschutz.html">Datenschutz</a> | Österreich
+    </p>
+  </div>
+</footer>
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Jahr im Footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Warenkorb-Zähler beim Laden anzeigen
+  (function(){
+    const stored = JSON.parse(localStorage.getItem("alharyCart") || "{}");
+    const totalCount = Object.values(stored).reduce((sum, q) => sum + q, 0);
+    const countEl = document.getElementById("cart-count");
+    if(countEl) countEl.textContent = totalCount;
+  })();
+  </script>
+</body>
+</html>

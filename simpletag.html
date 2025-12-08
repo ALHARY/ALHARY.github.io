@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alhary – Simple Tag | Smarter Gegenstands-Finder</title>
+  <meta name="description" content="Alhary Simple Tag: Der smarte Bluetooth-Tag für Unternehmen und Privatpersonen. Kompatibel mit CR2032 und ML2032, optional mit Simple Dock Firmen-System. Crowd-Network für fundierte Ortung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1220;           
+      --panel:#131735;        
+      --muted:#99a0c2;        
+      --text:#e8ebff;         
+      --brand:#67b6ff;        
+      --brand-2:#7df1c9;      
+      --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent);
+      --radius-xl: 1.25rem;
+      --radius-2xl: 1.75rem;
+      --shadow-lg: 0 20px 40px rgba(0,0,0,.45);
+      --shadow-md: 0 12px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, #1a2150 0%, transparent 55%),
+                  radial-gradient(900px 600px at 0% 0%, #10243e 0%, transparent 45%), var(--bg);
+      color:var(--text);
+      letter-spacing:.1px;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin-inline:auto;padding:0 24px}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
+      background: linear-gradient(to bottom, rgba(15,18,32,.9), rgba(15,18,32,.65));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:36px;height:36px;border-radius:12px;
+      background: conic-gradient(from 90deg, var(--brand), var(--brand-2));
+      box-shadow:0 6px 16px rgba(103,182,255,.35);
+    }
+    .brand h1{font-size:1.15rem;margin:0;font-weight:800;letter-spacing:.3px}
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;font-weight:600}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b1022; box-shadow: var(--shadow-md)}
+    .btn.primary:hover{transform:translateY(-1px)}
+    .btn.ghost{border:1px solid rgba(255,255,255,.12);color:var(--text);background:rgba(255,255,255,.03)}
+    .btn.ghost:hover{background:rgba(255,255,255,.06)}
+
+    .hero{padding:72px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;background:rgba(125,241,201,.12);color:var(--brand-2);font-weight:600;font-size:.9rem}
+    h2.display{font-size:clamp(2.2rem, 5vw, 3.6rem);line-height:1.05;margin:14px 0 14px}
+    .lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+    .cta{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+    .tag-mock{
+      position:relative;border-radius:var(--radius-2xl);padding:30px;background:linear-gradient(180deg,#161b3b,#0f142f);box-shadow:var(--shadow-lg);
+      border:1px solid rgba(255,255,255,.07)
+    }
+    .tag{height:280px;border-radius:28px;background:
+        radial-gradient(180px 120px at 70% 20%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, #a2d5ff 0%, #adffe6 100%);
+      box-shadow: inset 0 -20px 40px rgba(0,0,0,.18), 0 20px 40px rgba(0,0,0,.35);
+      display:grid;place-items:center;color:#0b1022;font-weight:800;font-size:1.4rem
+    }
+    .badge{position:absolute;right:-10px;top:-10px;background:#11173a;border:1px solid rgba(255,255,255,.09);color:var(--brand);padding:8px 12px;border-radius:999px;font-weight:700;box-shadow:var(--shadow-md)}
+
+    section{padding:64px 0}
+    .section-title{font-size:1.8rem;margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-xl);padding:22px;box-shadow:var(--shadow-md)}
+    .card h3{margin:8px 0 6px;font-size:1.1rem}
+    .kicker{font-size:.85rem;letter-spacing:.25px;color:var(--brand-2);font-weight:700;text-transform:uppercase}
+
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+    .step{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:18px}
+    .step .num{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1022;font-weight:800;margin-bottom:10px}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;background:rgba(103,182,255,.12);color:var(--brand);font-weight:700;font-size:.9rem}
+
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price-card{background:linear-gradient(180deg,#151a3a,#0f142f);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-md)}
+    .price{font-size:2rem;font-weight:800;margin:8px 0}
+    .small{font-size:.92rem}
+
+    details{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px}
+    summary{cursor:pointer;font-weight:600}
+    details p{color:var(--muted)}
+
+    footer{padding:36px 0 64px;border-top:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
+    .footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+    .copyright{color:#9aa3cb;font-size:.92rem}
+
+    @media (max-width: 980px){
+      .hero-grid, .split{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .pricing{grid-template-columns:1fr}
+      .footgrid{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .cards{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+    }
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .brand {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .brand h1 {
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 48px 0;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  p.muted {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .about-grid,
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 28px 0 48px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  #cart-count {
+    top: -5px;
+    right: -8px;
+    padding: 1px 5px;
+    font-size: 0.75rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+<header>
+
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <div class="logo"></div>
+      <h1>Alhary</h1>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="btn ghost">Produkte</a>
+      <a href="simpletag.html">Simple Tag</a>
+      <a href="about.html" class="btn ghost">Über uns</a>
+
+      <a href="shop.html" class="btn ghost" style="position:relative;display:inline-flex;align-items:center;">
+        🛒 
+        <span id="cart-count" style="position:absolute;top:-6px;right:-10px;
+        background:var(--brand-2);color:#0b1022;border-radius:999px;padding:2px 6px;
+        font-size:.8rem;font-weight:700;">0</span>
+      </a>
+
+    </nav>
+  </div>
+</header>
+
+
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Neu von Alhary</span>
+          <h2 class="display">Simple Tag – Dinge schneller wiederfinden.</h2>
+          <p class="lead">
+Simple Tag hilft Ihnen, Dinge schneller wiederzufinden – ganz automatisch.
+Ob Schlüssel, Tasche oder Rucksack: Der Tag speichert Orte zuverlässig und aktualisiert sie, sobald ein kompatibles Gerät in der Nähe ist. So bleiben Sie immer einen Schritt näher an dem, was Ihnen wichtig ist.
+          </p>
+          <div class="cta">
+            <button class="btn primary" type="button" onclick="addToCart('Simple Tag')">In den Warenkorb</button>
+            <a href="#funktion" class="btn ghost">So funktioniert’s</a>
+          </div>
+        </div>
+        <div class="tag-mock" aria-hidden="true">
+          <div class="badge">ca. 1 Jahr Laufzeit*</div>
+          <div class="tag">Simple&nbsp;Tag</div>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:10px">*typisch für Standardmodell mit CR2032</p>
+    </section>
+
+    <section id="produkt" class="container">
+      <h2 class="section-title">Warum Simple Tag?</h2>
+      <p class="muted" style="margin-bottom:14px">Entwickelt in Österreich – kompatibel mit CR2032 und ML2032.</p>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <div class="kicker">Kompatibilität</div>
+          <h3>Austauschbare Batterie</h3>
+          <p class="muted">
+            Simple Tag funktioniert sowohl mit CR2032 (Standard) als auch mit ML2032 (aufladbar). 
+            Sie können die Batterie jederzeit selbst wechseln.
+          </p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="kicker">Crowd-Network</div>
+          <h3>Automatische Ortungsupdates</h3>
+          <p class="muted">
+            Wird Ihr Tag von einem anderen Nutzer innerhalb von etwa 100&nbsp;m erkannt, 
+            aktualisiert sich der Standort automatisch – anonym und sicher.
+          </p>
+        </article>
+        <article class="card" role="listitem">
+          <div class="kicker">Laufzeit</div>
+          <h3>Bis zu 1 Jahr</h3>
+          <p class="muted">Die Standardversion mit CR2032 hält typischerweise rund ein Jahr.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="funktion" class="container">
+      <h2 class="section-title">So funktioniert’s</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Verbinden</h3>
+          <p class="muted">Simple Tag mit Ihrem Smartphone koppeln.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Befestigen</h3>
+          <p class="muted">Am Schlüsselbund, in der Tasche oder am Rucksack anbringen.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Position aktualisieren</h3>
+          <p class="muted">Ihr Smartphone übermittelt Positionsdaten, wenn eine Verbindung besteht.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Crowd-Network</h3>
+          <p class="muted">Nutzer in der Nähe (ca. 100&nbsp;m) aktualisieren den Standort anonym.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="nachhaltigkeit" class="container">
+      <div class="split">
+        <div>
+          <span class="pill">Für Unternehmen</span>
+          <h2 class="section-title">Simple Dock – Das Firmen-System</h2>
+          <p class="muted">
+            Ab einer Bestellung von mindestens 10 Simple Tags bieten wir unser 
+            <strong>Simple-Dock-System</strong> an:  
+            eine Kombination aus aufladbaren ML2032-Tags und gemeinsamer Ladestation für Teams.
+          </p>
+          <ul class="muted">
+            <li>✔ ML2032-Version: aufladbar</li>
+            <li>✔ Gemeinsame Ladestation für Mitarbeiter</li>
+            <li>✔ Rund 7 Monate Laufzeit pro Ladung</li>
+            <li>✔ Ideal für Firmen, Inventar, Werkstätten, Schulen, Büros</li>
+          </ul>
+          <div class="cta" style="margin-top:12px">
+            <button class="btn primary" type="button" onclick="sendSimpleDockRequest()">Angebot anfragen</button>
+            <a href="#faq" class="btn ghost">FAQ ansehen</a>
+          </div>
+        </div>
+        <div class="tag-mock" aria-hidden="true">
+          <div class="badge">Ab 10 Stück</div>
+          <div class="tag">Simple&nbsp;Dock</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="specs-h">
+      <h2 id="specs-h" class="section-title">Technische Eckdaten</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Verbindung</h3>
+          <p class="muted">Bluetooth-Verbindung mit gängigen Smartphones.</p>
+        </div>
+        <div class="card">
+          <h3>Stromversorgung</h3>
+          <p class="muted">
+            CR2032 (Standard, ca. 1 Jahr)  
+            ML2032 (Simple Dock – aufladbar)
+          </p>
+        </div>
+        <div class="card">
+          <h3>Ortungssystem</h3>
+          <p class="muted">
+            Letzter bekannter Ort & anonymes Crowd-Network innerhalb ~100&nbsp;m.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="anfragen" class="container">
+      <div class="price-card" style="display:grid;gap:10px;place-items:start">
+        <span class="kicker">Interesse</span>
+        <h2 class="section-title" style="margin:0">Jetzt informieren oder Demo anfragen</h2>
+        <p class="muted">Wir beraten Sie persönlich – speziell für Firmen und Schulen.</p>
+        <div class="cta">
+          <a class="btn primary" href="javascript:sendGeneralContact()">Kontakt aufnehmen</a>
+
+          <a class="btn ghost" href="#faq">Häufige Fragen</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="container">
+      <h2 class="section-title">Häufige Fragen</h2>
+      <div style="display:grid;gap:10px">
+        <details>
+          <summary>Funktioniert Simple Tag mit meinem Handy?</summary>
+          <p>Simple Tag verbindet sich per Bluetooth mit gängigen Android-Smartphones.</p>
+        </details>
+        <details>
+          <summary>Wie präzise ist die Ortung?</summary>
+          <p>Der letzte bekannte Ort wird gespeichert, sobald Ihr Smartphone mit dem Tag verbunden war.</p>
+        </details>
+        <details>
+          <summary>Gibt es ein Crowd-Netzwerk?</summary>
+          <p>
+            Ja. Wenn ein anderes Smartphone mit Simple-Tag-App innerhalb von etwa 100&nbsp;m vorbeikommt, 
+            wird der Standort anonym und automatisch aktualisiert. 
+            So lässt sich ein verlorener Gegenstand auch dann wiederfinden, wenn man selbst weit entfernt ist.
+          </p>
+        </details>
+        <details>
+          <summary>Kann ich die Batterie selbst wechseln?</summary>
+          <p>Ja. Simple Tag ist kompatibel mit CR2032 (Standard) und ML2032 (aufladbar).</p>
+        </details>
+        <details>
+          <summary>Wie lange hält die Batterie?</summary>
+          <p>CR2032: typ. ca. 1 Jahr.  
+             ML2032 (Simple Dock): typ. ca. 7 Monate pro Ladung.</p>
+        </details>
+        <details>
+          <summary>Was ist Simple Dock?</summary>
+          <p>Ein Firmen-System ab 10 Stück: aufladbare ML2032-Tags + zentrale Ladestation.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="kontakt" class="container">
+      <div class="split">
+        <div>
+          <h2 class="section-title">Kontakt</h2>
+          <p class="muted">Senden Sie uns eine Nachricht. Wir beraten Sie gerne – besonders für Firmenanwendungen.</p>
+          <form class="card" onsubmit="handleSubmit(event)">
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Max Mustermann" style="margin:6px 0 12px" />
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" required placeholder="name@beispiel.at" style="margin:6px 0 12px" />
+            <label for="msg">Ihre Nachricht</label>
+            <textarea id="msg" name="msg" rows="5" required placeholder="Wie können wir helfen?" style="margin:6px 0 16px"></textarea>
+            <button class="btn primary" type="submit">Nachricht senden</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Alhary – Junior Company</h3>
+          <p class="muted">Österreich</p>
+          <p class="muted">E-Mail: <a href="mailto:thomas.allesch@edu.htl-klu.at">thomas.allesch@edu.htl-klu.at</a></p>
+          <p class="muted">Mo–Fr, 9–17 Uhr</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footgrid">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <div class="logo" aria-hidden="true"></div>
+          <strong>Alhary</strong>
+        </div>
+        <p class="copyright">© <span id="year"></span> Alhary – Junior Company. Alle Rechte vorbehalten.</p>
+      </div>
+      <div>
+        <strong>Rechtliches</strong>
+        <p><a href="impressum.html">Impressum</a></p>
+        <p><a href="datenschutz.html">Datenschutz</a></p>
+      </div>
+
+      <div>
+        <strong>Kontakt</strong>
+        <p><a href="mailto:thomas.allesch@edu.htl-klu.at">thomas.allesch@edu.htl-klu.at</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    input, textarea{width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text);padding:12px 14px;border-radius:12px;outline:none}
+    input:focus, textarea:focus{box-shadow:var(--ring);border-color:transparent}
+  </style>
+<script>
+const cartCount = document.getElementById("cart-count");
+
+// --- Warenkorb laden ---
+(function(){
+  const stored = JSON.parse(localStorage.getItem("alharyCart") || "{}");
+  const totalCount = Object.values(stored).reduce((sum, q) => sum + q, 0);
+  cartCount.textContent = totalCount;
+})();
+
+// Produkt hinzufügen
+function addToCart(item){
+  const stored = JSON.parse(localStorage.getItem("alharyCart") || "{}");
+  stored[item] = (stored[item] || 0) + 1;
+  localStorage.setItem("alharyCart", JSON.stringify(stored));
+  const totalCount = Object.values(stored).reduce((sum, q) => sum + q, 0);
+  cartCount.textContent = totalCount;
+}
+
+
+// ----------------------------------------------------------
+// 1) Simple Dock – Anfrage per E-Mail
+// ----------------------------------------------------------
+function sendSimpleDockRequest() {
+  const shopEmail = "thomas.allesch@edu.htl-klu.at";
+  const subject = encodeURIComponent("Anfrage – Simple Dock Firmenpaket");
+
+  const body = encodeURIComponent(
+    "Guten Tag,\n\n" +
+    "ich interessiere mich für das Simple-Dock-Firmensystem (ab 10 Stück):\n" +
+    "- Aufladbare ML2032-Modelle\n" +
+    "- Zentrale Ladestation\n\n" +
+    "Bitte senden Sie mir weitere Informationen.\n\n" +
+    "Name:\n" +
+    "Firma (optional):\n" +
+    "Telefon (optional):\n\n" +
+    "Mit freundlichen Grüßen\n"
+  );
+
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${shopEmail}&su=${subject}&body=${body}`;
+  const newTab = window.open(gmail, "_blank");
+
+  if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+    window.location.href = `mailto:${shopEmail}?subject=${subject}&body=${body}`;
+  }
+}
+
+
+// ----------------------------------------------------------
+// 2) "Kontakt aufnehmen" – Direktmail wie im Shop
+// ----------------------------------------------------------
+function sendGeneralContact() {
+  const shopEmail = "thomas.allesch@edu.htl-klu.at";
+  const subject = encodeURIComponent("Kontaktaufnahme – Alhary");
+
+  const body = encodeURIComponent(
+    "Guten Tag,\n\n" +
+    "ich möchte gerne Kontakt aufnehmen.\n\n" +
+    "Name:\n" +
+    "E-Mail:\n" +
+    "Nachricht:\n\n" +
+    "Mit freundlichen Grüßen\n"
+  );
+
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${shopEmail}&su=${subject}&body=${body}`;
+  const newTab = window.open(gmail, "_blank");
+
+  if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+    window.location.href = `mailto:${shopEmail}?subject=${subject}&body=${body}`;
+  }
+}
+
+
+// ----------------------------------------------------------
+// 3) Kontaktformular – wie Shop Checkout mit Fallback
+// ----------------------------------------------------------
+function handleSubmit(e){
+  e.preventDefault();
+
+  const data = new FormData(e.target);
+  const name = data.get('name');
+  const email = data.get('email');
+  const msg = data.get('msg');
+
+  const shopEmail = "thomas.allesch@edu.htl-klu.at";
+  const subject = encodeURIComponent("Kontaktanfrage – Website");
+
+  const body = encodeURIComponent(
+    `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${msg}\n\n--\nGesendet über das Kontaktformular`
+  );
+
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${shopEmail}&su=${subject}&body=${body}`;
+  const newTab = window.open(gmail, "_blank");
+
+  if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+    window.location.href = `mailto:${shopEmail}?subject=${subject}&body=${body}`;
+  }
+
+  alert("Ihr E-Mail-Programm wurde geöffnet.");
+  e.target.reset();
+}
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+
+</body>
+</html>

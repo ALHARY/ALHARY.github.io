@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Impressum | Alhary</title>
+  <meta name="description" content="Impressum der Junior Company Alhary, HTL Mössingerstraße, Klagenfurt, Österreich." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#0f1220;
+      --panel:#131735;
+      --muted:#99a0c2;
+      --text:#e8ebff;
+      --brand:#67b6ff;
+      --brand-2:#7df1c9;
+      --radius-xl:1.25rem;
+      --shadow-md:0 12px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,sans-serif;
+      background:radial-gradient(1200px 800px at 80% -10%,#1a2150 0%,transparent 55%),
+                 radial-gradient(900px 600px at 0% 0%,#10243e 0%,transparent 45%),
+                 var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:900px;margin-inline:auto;padding:0 24px;}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(120%) blur(8px);
+      background:linear-gradient(to bottom,rgba(15,18,32,.9),rgba(15,18,32,.65));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px;}
+    .brand{display:flex;gap:12px;align-items:center;}
+    .logo{width:36px;height:36px;border-radius:12px;
+      background:conic-gradient(from 90deg,var(--brand),var(--brand-2));
+      box-shadow:0 6px 16px rgba(103,182,255,.35);}
+    .brand h1{font-size:1.15rem;margin:0;font-weight:800;}
+    main{padding:80px 0;}
+    h2.section-title{font-size:2rem;margin-bottom:20px;}
+    .muted{color:var(--muted);}
+    .card{
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius-xl);
+      padding:28px;
+      box-shadow:var(--shadow-md);
+    }
+    footer{
+      padding:36px 0 64px;
+      border-top:1px solid rgba(255,255,255,.06);
+      text-align:center;
+      color:var(--muted);
+      background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <div class="logo"></div>
+        <h1>Alhary</h1>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="btn ghost">Produkte</a>
+        <a href="simpletag.html" class="btn ghost">Simple Tag</a>
+        <a href="about.html" class="btn ghost">Über uns</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Impressum</h2>
+    <div class="card">
+      <p><strong>Alhary – Junior Company der HTL Mössingerstraße</strong><br>
+      Mössingerstraße 25<br>
+      9020 Klagenfurt am Wörthersee<br>
+      Österreich</p>
+
+      <p><strong>Vertretungsberechtigt:</strong><br>
+      Lukas Haller (CEO)<br>
+      Thomas Allesch<br>
+      Raphael Jöri</p>
+
+      <p><strong>Schule / Träger:</strong><br>
+      Höhere Technische Bundeslehranstalt Mössingerstraße<br>
+      Mössingerstraße 25, 9020 Klagenfurt<br>
+      <a href="https://www.htl-klu.at">www.htl-klu.at</a></p>
+
+      <p><strong>Kontakt:</strong><br>
+      E-Mail: <a href="mailto:hello@alhary.at">hello@alhary.at</a></p>
+
+      <p><strong>Haftungsausschluss:</strong><br>
+      Diese Website wurde im Rahmen einer schulischen Junior Company erstellt.  
+      Alle Angaben erfolgen ohne Gewähr auf Vollständigkeit, Richtigkeit und Aktualität.</p>
+
+      <p><strong>Urheberrecht:</strong><br>
+      Inhalte und Design sind urheberrechtlich geschützt.  
+      Die Verwendung von Texten oder Bildern bedarf der Zustimmung der Alhary Junior Company.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Alhary | Junior Company HTL Mössingerstraße | Österreich</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

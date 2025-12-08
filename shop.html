@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="de-AT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warenkorb | Alhary</title>
+  <meta name="description" content="Ihr Warenkorb – Simple Tag und Zubehör kaufen bei Alhary." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0f1220;
+      --panel:#131735;
+      --muted:#99a0c2;
+      --text:#e8ebff;
+      --brand:#67b6ff;
+      --brand-2:#7df1c9;
+      --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent);
+      --radius-xl: 1.25rem;
+      --radius-2xl: 1.75rem;
+      --shadow-lg: 0 20px 40px rgba(0,0,0,.45);
+      --shadow-md: 0 12px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, #1a2150 0%, transparent 55%),
+                  radial-gradient(900px 600px at 0% 0%, #10243e 0%, transparent 45%), var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin-inline:auto;padding:0 24px}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
+      background: linear-gradient(to bottom, rgba(15,18,32,.9), rgba(15,18,32,.65));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:36px;height:36px;border-radius:12px;
+      background: conic-gradient(from 90deg, var(--brand), var(--brand-2));
+      box-shadow:0 6px 16px rgba(103,182,255,.35);
+    }
+    .brand h1{font-size:1.15rem;margin:0;font-weight:800;letter-spacing:.3px}
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .btn{
+      display:inline-flex;gap:10px;align-items:center;justify-content:center;
+      padding:12px 18px;border-radius:999px;font-weight:600;cursor:pointer
+    }
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1022;box-shadow:var(--shadow-md)}
+    .btn.primary:hover{transform:translateY(-1px)}
+    .btn.ghost{border:1px solid rgba(255,255,255,.12);color:var(--text);background:rgba(255,255,255,.03)}
+    .btn.ghost:hover{background:rgba(255,255,255,.06)}
+
+    h2.section-title{font-size:1.9rem;margin-bottom:12px}
+    .muted{color:var(--muted)}
+
+    .cart-grid{display:grid;gap:18px;margin-top:36px}
+    .cart-item{
+      background:var(--panel);border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius-xl);padding:22px;
+      display:flex;justify-content:space-between;align-items:center;
+      box-shadow:var(--shadow-md);
+    }
+    .cart-item h3{margin:0;font-size:1.1rem}
+    .cart-item .price{color:var(--brand);font-weight:700}
+    .remove-btn{color:var(--brand-2);background:none;border:none;cursor:pointer;font-size:.9rem}
+
+    .total{
+      text-align:right;font-size:1.2rem;font-weight:700;color:var(--brand);
+      margin-top:10px;margin-bottom:30px;
+    }
+    footer{
+      padding:36px 0 64px;border-top:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+      text-align:center;color:var(--muted);
+    }
+
+    /* ---------- Mobile optimierungen ---------- */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .brand {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .brand h1 {
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 48px 0;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  p.muted {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .about-grid,
+  .grid {
+    grid-template-columns: 1fr; /* Karten untereinander */
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 28px 0 48px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Damit der Warenkorb-Zähler nicht überlappt */
+  #cart-count {
+    top: -5px;
+    right: -8px;
+    padding: 1px 5px;
+    font-size: 0.75rem;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <div class="logo"></div>
+        <h1>Alhary</h1>
+      </a>
+      <nav class="nav-links">
+        <a href="simpletag.html">Zurück</a>
+        <a href="about.html" class="btn ghost">Über uns</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">Ihr Warenkorb</h2>
+      <p class="muted">Überprüfen Sie Ihre Artikel und senden Sie eine Anfrage.</p>
+
+      <div id="cart-container" class="cart-grid"></div>
+      <p id="total" class="total"></p>
+
+      <div style="text-align:right;">
+        <button class="btn primary" onclick="checkout()">Jetzt anfragen</button>
+      </div>
+    </section>
+  </main>
+
+<footer>
+  <div class="container" style="text-align:center;">
+    <p>© <span id="year"></span> Alhary | Junior Company HTL Mössingerstraße | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="datenschutz.html">Datenschutz</a> | Österreich
+    </p>
+  </div>
+</footer>
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Beispielhafte Daten (würden in echter Version vom localStorage / API kommen)
+    const prices = {"Simple Tag":14.99, "Ladestation":7.99};
+    const container = document.getElementById("cart-container");
+    const totalEl = document.getElementById("total");
+
+    function renderCart(){
+      const cart = JSON.parse(localStorage.getItem("alharyCart") || "{}");
+      const entries = Object.entries(cart);
+      container.innerHTML = "";
+      let total = 0;
+
+      if(entries.length===0){
+        container.innerHTML = `<p class="muted">Ihr Warenkorb ist leer.</p>`;
+        totalEl.textContent = "";
+        return;
+      }
+      entries.forEach(([name,qty])=>{
+        const price = prices[name] * qty;
+        total += price;
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <div>
+            <h3>${name}</h3>
+            <p class="muted">Menge: ${qty}</p>
+          </div>
+          <div>
+            <p class="price">€ ${price.toFixed(2)}</p>
+            <button class="remove-btn" onclick="removeItem('${name}')">Entfernen</button>
+          </div>`;
+        container.appendChild(div);
+      });
+      totalEl.textContent = `Gesamt: € ${total.toFixed(2)}`;
+    }
+
+  function removeItem(name){
+    const cart = JSON.parse(localStorage.getItem("alharyCart") || "{}");
+    delete cart[name];
+    localStorage.setItem("alharyCart", JSON.stringify(cart));
+    renderCart();
+  }
+
+
+function checkout() {
+  const cart = JSON.parse(localStorage.getItem("alharyCart") || "{}");
+  const prices = {"Simple Tag": 14.99, "Ladestation": 7.99};
+  const entries = Object.entries(cart);
+
+  if (entries.length === 0) {
+    alert("Ihr Warenkorb ist leer.");
+    return;
+  }
+
+  const shopEmail = "thomas.allesch@edu.htl-klu.at";
+  const subject = encodeURIComponent("Bestellanfrage – Alhary Shop");
+
+  let body = "Guten Tag,%0D%0A%0D%0Aich möchte folgende Produkte vorbestellen:%0D%0A%0D%0A";
+  let total = 0;
+
+  entries.forEach(([name, qty]) => {
+    const price = (prices[name] || 0) * qty;
+    total += price;
+    body += `• ${name} – ${qty} Stück (à €${(prices[name] || 0).toFixed(2)})%0D%0A`;
+  });
+
+  body += `%0D%0AGesamtbetrag: € ${total.toFixed(2)}%0D%0A%0D%0A`;
+  body += `Name:%0D%0AAdresse:%0D%0A%0D%0AMit freundlichen Grüßen%0D%0A`;
+
+  const mailto = `mailto:${shopEmail}?subject=${subject}&body=${body}`;
+  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${shopEmail}&su=${subject}&body=${body}`;
+
+  // 1️⃣ Versuch: Gmail im neuen Tab öffnen (funktioniert fast überall)
+  const newTab = window.open(gmail, "_blank");
+
+  // 2️⃣ Wenn kein Gmail verfügbar oder blockiert, versuche mailto als Fallback
+  if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+    const link = document.createElement("a");
+    link.href = mailto;
+    link.target = "_self"; // muss so sein, sonst blockiert Browser
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  alert("Ihr E-Mail-Programm oder Gmail wurde geöffnet. Falls nicht, prüfen Sie bitte Ihre Browser-Einstellungen.");
+}
+
+
+    renderCart();
+  </script>
+</body>
+</html>
