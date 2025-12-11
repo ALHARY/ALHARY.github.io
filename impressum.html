@@ -42,6 +42,11 @@
     .logo{width:36px;height:36px;border-radius:12px;
       background:conic-gradient(from 90deg,var(--brand),var(--brand-2));
       box-shadow:0 6px 16px rgba(103,182,255,.35);}
+      .brand .logo-text {
+  height: 45px;      /* hier steuerst du die Größe des Text-Logos */
+  width: auto;
+  display: block;
+}
     .brand h1{font-size:1.15rem;margin:0;font-weight:800;}
     main{padding:80px 0;}
     h2.section-title{font-size:2rem;margin-bottom:20px;}
@@ -65,11 +70,11 @@
 
 <body>
   <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo"></div>
-        <h1>Alhary</h1>
-      </a>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Alhary Startseite">
+      <div class="logo" aria-hidden="true"></div>
+      <img src="Logo.png" alt="Alhary" class="logo-text">
+    </a>
       <nav class="nav-links">
         <a href="index.html" class="btn ghost">Produkte</a>
         <a href="simpletag.html" class="btn ghost">Simple Tag</a>
@@ -97,7 +102,7 @@
       <a href="https://www.htl-klu.at">www.htl-klu.at</a></p>
 
       <p><strong>Kontakt:</strong><br>
-      E-Mail: <a href="mailto:hello@alhary.at">hello@alhary.at</a></p>
+      E-Mail: <a href="alharyengineering@gmail.com">alharyengineering@gmail.com</a></p>
 
       <p><strong>Haftungsausschluss:</strong><br>
       Diese Website wurde im Rahmen einer schulischen Junior Company erstellt.  

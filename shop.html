@@ -45,6 +45,12 @@
       background: conic-gradient(from 90deg, var(--brand), var(--brand-2));
       box-shadow:0 6px 16px rgba(103,182,255,.35);
     }
+    .brand .logo-text {
+  height: 45px;      /* hier steuerst du die Größe des Text-Logos */
+  width: auto;
+  display: block;
+}
+
     .brand h1{font-size:1.15rem;margin:0;font-weight:800;letter-spacing:.3px}
     .nav-links{display:flex;gap:20px;align-items:center}
     .btn{
@@ -158,11 +164,13 @@
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo"></div>
-        <h1>Alhary</h1>
-      </a>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Alhary Startseite">
+      <div class="logo" aria-hidden="true"></div>
+      <img src="Logo.png" alt="Alhary" class="logo-text">
+    </a>
+
+
       <nav class="nav-links">
         <a href="simpletag.html">Zurück</a>
         <a href="about.html" class="btn ghost">Über uns</a>
@@ -198,7 +206,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Beispielhafte Daten (würden in echter Version vom localStorage / API kommen)
-    const prices = {"Simple Tag":14.99, "Ladestation":7.99};
+    const prices = {"Simple Tag":18.99, "Ladestation":10};
     const container = document.getElementById("cart-container");
     const totalEl = document.getElementById("total");
 
@@ -242,7 +250,7 @@
 
 function checkout() {
   const cart = JSON.parse(localStorage.getItem("alharyCart") || "{}");
-  const prices = {"Simple Tag": 14.99, "Ladestation": 7.99};
+  const prices = {"Simple Tag": 18.99, "Ladestation": 10};
   const entries = Object.entries(cart);
 
   if (entries.length === 0) {

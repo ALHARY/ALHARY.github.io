@@ -47,6 +47,11 @@
       background:conic-gradient(from 90deg,var(--brand),var(--brand-2));
       box-shadow:0 6px 16px rgba(103,182,255,.35);
     }
+    .brand .logo-text {
+  height: 45px;      /* hier steuerst du die Größe des Text-Logos */
+  width: auto;
+  display: block;
+}
     .brand h1{font-size:1.15rem;margin:0;font-weight:800;}
 
     main{padding:80px 0;}
@@ -72,11 +77,11 @@
 
 <body>
   <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo"></div>
-        <h1>Alhary</h1>
-      </a>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Alhary Startseite">
+      <div class="logo" aria-hidden="true"></div>
+      <img src="Logo.png" alt="Alhary" class="logo-text">
+    </a>
       <nav class="nav-links">
         <a href="index.html" class="btn ghost">Produkte</a>
         <a href="simpletag.html" class="btn ghost">Simple Tag</a>

@@ -47,6 +47,13 @@
       background: conic-gradient(from 90deg, var(--brand), var(--brand-2));
       box-shadow:0 6px 16px rgba(103,182,255,.35);
     }
+
+.brand .logo-text {
+  height: 45px;      /* hier steuerst du die Größe des Text-Logos */
+  width: auto;
+  display: block;
+}
+
     .brand h1{font-size:1.15rem;margin:0;font-weight:800;letter-spacing:.3px}
     .nav a{opacity:.9}
     .nav a:hover{opacity:1}
@@ -73,6 +80,16 @@
       box-shadow: inset 0 -20px 40px rgba(0,0,0,.18), 0 20px 40px rgba(0,0,0,.35);
       display:grid;place-items:center;color:#0b1022;font-weight:800;font-size:1.4rem
     }
+
+    .tag-img {
+      max-width: 60%;
+      max-height: 90%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+    }
+
     .badge{position:absolute;right:-10px;top:-10px;background:#11173a;border:1px solid rgba(255,255,255,.09);color:var(--brand);padding:8px 12px;border-radius:999px;font-weight:700;box-shadow:var(--shadow-md)}
 
     section{padding:64px 0}
@@ -178,12 +195,15 @@
     height: 30px;
   }
 
+
+
   #cart-count {
     top: -5px;
     right: -8px;
     padding: 1px 5px;
     font-size: 0.75rem;
   }
+
 }
 
   </style>
@@ -192,10 +212,11 @@
 <header>
 
   <div class="container nav">
-    <a class="brand" href="index.html">
-      <div class="logo"></div>
-      <h1>Alhary</h1>
-    </a>
+<a class="brand" href="index.html" aria-label="Alhary Startseite">
+  <div class="logo" aria-hidden="true"></div>
+  <img src="Logo.png" alt="Alhary" class="logo-text">
+</a>
+
     <nav class="nav-links">
       <a href="index.html" class="btn ghost">Produkte</a>
       <a href="simpletag.html">Simple Tag</a>
@@ -231,7 +252,9 @@ Ob Schlüssel, Tasche oder Rucksack: Der Tag speichert Orte zuverlässig und akt
         </div>
         <div class="tag-mock" aria-hidden="true">
           <div class="badge">ca. 1 Jahr Laufzeit*</div>
-          <div class="tag">Simple&nbsp;Tag</div>
+          <div class="tag">
+            <img src="SimpleTag.png" alt="Simple Tag" class = "tag-img">
+            </div>
         </div>
       </div>
       <p class="muted small" style="margin-top:10px">*typisch für Standardmodell mit CR2032</p>
@@ -408,7 +431,7 @@ Ob Schlüssel, Tasche oder Rucksack: Der Tag speichert Orte zuverlässig und akt
         <div class="card">
           <h3>Alhary – Junior Company</h3>
           <p class="muted">Österreich</p>
-          <p class="muted">E-Mail: <a href="mailto:thomas.allesch@edu.htl-klu.at">thomas.allesch@edu.htl-klu.at</a></p>
+          <p class="muted">E-Mail: <a href="mailto:alharyengineering@gmail.com">alharyengineering@gmail.com</a></p>
           <p class="muted">Mo–Fr, 9–17 Uhr</p>
         </div>
       </div>
@@ -432,7 +455,7 @@ Ob Schlüssel, Tasche oder Rucksack: Der Tag speichert Orte zuverlässig und akt
 
       <div>
         <strong>Kontakt</strong>
-        <p><a href="mailto:thomas.allesch@edu.htl-klu.at">thomas.allesch@edu.htl-klu.at</a></p>
+        <p><a href="alharyengineering@gmail.com">alharyengineering@gmail.com</a></p>
       </div>
     </div>
   </footer>

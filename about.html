@@ -50,6 +50,11 @@
       background:conic-gradient(from 90deg,var(--brand),var(--brand-2));
       box-shadow:0 6px 16px rgba(103,182,255,.35);
     }
+    .brand .logo-text {
+  height: 45px;      /* hier steuerst du die Größe des Text-Logos */
+  width: auto;
+  display: block;
+}
     .brand h1 { font-size:1.15rem; margin:0; font-weight:800; }
 
     .nav-links { display:flex; gap:20px; align-items:center; }
@@ -83,6 +88,7 @@
       grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
       gap:24px;
       align-items:center;
+      align-items: stretch;
     }
 
     .card {
@@ -182,11 +188,11 @@
 
 <body>
   <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo"></div>
-        <h1>Alhary</h1>
-      </a>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Alhary Startseite">
+      <div class="logo" aria-hidden="true"></div>
+      <img src="Logo.png" alt="Alhary" class="logo-text">
+    </a>
       <nav class="nav-links">
         <a href="index.html" class="btn ghost">Produkte</a>
         <a href="simpletag.html" class="btn ghost">Simple Tag</a>
@@ -245,7 +251,7 @@
 
 
       <div class="card" style="text-align:center;">
-      <img src="lukas.jpg" alt="Lukas Haller" style="width:100%;max-width:200px;margin:0 auto 16px;border-radius:50%;">
+      <img src="lukas.png" alt="Lukas Haller" style="width:100%;max-width:200px;margin:0 auto 16px;border-radius:50%;">
       <h3>Lukas Haller</h3>
       <p class="muted">CEO & Hardware-Design</p>
       <p>Lukas leitet das Unternehmen, kümmert sich um die Hardware-Entwicklung, 3D-Druck, Platinendesign und Projektplanung.</p>
@@ -253,7 +259,7 @@
 
   <div class="about-grid">
     <div class="card" style="text-align:center;">
-      <img src="thomas.jpg" alt="Thomas Allesch" style="width:100%;max-width:200px;margin:0 auto 16px;border-radius:50%;">
+      <img src="Thomas.png" alt="Thomas Allesch" style="width:100%;max-width:200px;margin:0 auto 16px;border-radius:50%;">
       <h3>Thomas Allesch</h3>
       <p class="muted">IT, Software & Web/App Entwicklung</p>
       <p>Thomas ist für die technische Umsetzung verantwortlich – von der Website bis zur App-Integration des Simple Tags.</p>
@@ -261,7 +267,7 @@
 
 
     <div class="card" style="text-align:center;">
-      <img src="raphael.jpg" alt="Raphael Jöri" style="width:100%;max-width:200px;margin:0 auto 16px;border-radius:50%;">
+      <img src="Raphi.png" alt="Raphael Jöri" style="width:100%;max-width:200px;margin:0 auto 16px;border-radius:50%;">
       <h3>Raphael Jöri</h3>
       <p class="muted">Marketing & Kommunikation</p>
       <p>Raphael ist für das Marketing, Branding und die Kommunikation verantwortlich – sowohl online als auch offline.</p>

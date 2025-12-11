@@ -50,6 +50,12 @@
       background:conic-gradient(from 90deg,var(--brand),var(--brand-2));
       box-shadow:0 6px 16px rgba(103,182,255,.35);
     }
+
+    .brand .logo-text {
+  height: 45px;      /* hier steuerst du die Größe des Text-Logos */
+  width: auto;
+  display: block;
+}
     .brand h1 { font-size:1.15rem; margin:0; font-weight:800; }
 
     .nav-links { display:flex; gap:20px; align-items:center; }
@@ -95,6 +101,13 @@
     .card:hover { transform:translateY(-3px); }
     .card h3 { margin:12px 0 6px; }
     .price { color:var(--brand); font-weight:700; font-size:1.2rem; }
+    .card img {
+  max-width: 180px; /* oder 150px, 200px – was dir gefällt */
+  margin: 0 auto 16px;
+  display: block;
+  border-radius: var(--radius-xl);
+}
+
 
     footer {
       padding:36px 0 64px;
@@ -187,9 +200,9 @@
 <body>
   <header>
   <div class="container nav">
-    <a class="brand" href="#top">
-      <div class="logo"></div>
-      <h1>Alhary</h1>
+    <a class="brand" href="index.html" aria-label="Alhary Startseite">
+      <div class="logo" aria-hidden="true"></div>
+      <img src="Logo.png" alt="Alhary" class="logo-text">
     </a>
     <nav class="nav-links">
       <a href="#produkte">Produkte</a>
@@ -214,20 +227,14 @@
 
     <div class="grid">
       <div class="card">
-        <img src="simpletag.jpg" alt="Simple Tag Produktbild (Symbolisch)">
+        <img src="SimpleTag.png" alt="Simple Tag Produktbild">
         <h3>Simple Tag</h3>
         <p class="muted">Der smarte Bluetooth-Tracker, der sich den letzten Ort merkt.</p>
-        <p class="price">€ 18.99</p>
+        <p class="price">€ 18,99</p>
         <a href="simpletag.html" class="btn primary">Mehr erfahren</a>
       </div>
 
-      <div class="card">
-        <img src="ladestation.jpg" alt="Ladestation Produktbild (Symbolisch)">
-        <h3>Ladestation</h3>
-        <p class="muted">Nachhaltig nachladen statt Batterien – die perfekte Ergänzung zum Simple Tag.</p>
-        <p class="price">Coming Soon/</p>
-        <a href="simpletag.html#nachhaltigkeit" class="btn primary">Mehr erfahren</a>
-      </div>
+
     </div>
   </main>
 
@@ -257,5 +264,3 @@
   </script>
 </body>
 </html>
-
-
