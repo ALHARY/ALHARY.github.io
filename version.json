@@ -1,0 +1,13 @@
+{
+  "versionCode": 1,
+  "versionName": "1.0",
+  "releaseDate": "2026-01-03",
+  "apkUrl": "https://alhary.github.io/simpletag/releases/app-release-v1.0.apk",
+  "sha256": "",
+  "notes": [
+    "Initial test release",
+    "BLE background scanning with battery-aware duty cycle",
+    "Crowd-finding via community devices",
+    "Automatic lost / found detection"
+  ]
+}
