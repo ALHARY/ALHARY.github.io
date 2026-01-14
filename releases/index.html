@@ -1,100 +1,353 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de-AT">
 <head>
-    <meta charset="UTF-8">
-    <title>SimpleTag – Releases</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>SimpleTag – Releases</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #0f172a;
-            color: #e5e7eb;
-            margin: 0;
-            padding: 24px;
-        }
+  <!-- Match Alhary typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        h1 {
-            margin-bottom: 8px;
-        }
+  <style>
+    :root{
+      --bg:#0f1220;
+      --panel:#131735;
+      --muted:#99a0c2;
+      --text:#e8ebff;
+      --brand:#67b6ff;
+      --brand-2:#7df1c9;
+      --ring: 0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent);
+      --radius-xl: 1.25rem;
+      --radius-2xl: 1.75rem;
+      --shadow-lg: 0 20px 40px rgba(0,0,0,.45);
+      --shadow-md: 0 12px 24px rgba(0,0,0,.35);
+    }
 
-        p {
-            color: #9ca3af;
-        }
+    *{ box-sizing:border-box; }
+    html, body { height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 80% -10%, #1a2150 0%, transparent 55%),
+        radial-gradient(900px 600px at 0% 0%, #10243e 0%, transparent 45%),
+        var(--bg);
+      color:var(--text);
+      letter-spacing:.1px;
+    }
 
-        .release {
-            background: #020617;
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 24px;
-        }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width: 980px; margin-inline:auto; padding: 0 24px; }
 
-        .release h2 {
-            margin: 0 0 8px 0;
-        }
+    header{
+      position: sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: saturate(120%) blur(8px);
+      background: linear-gradient(to bottom, rgba(15,18,32,.9), rgba(15,18,32,.65));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:72px;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      min-width: 0;
+    }
+    .logo{
+      width:36px;height:36px;border-radius:12px;
+      background: conic-gradient(from 90deg, var(--brand), var(--brand-2));
+      box-shadow: 0 6px 16px rgba(103,182,255,.35);
+      flex: 0 0 auto;
+    }
+    .brand-title{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+      min-width: 0;
+    }
+    .brand-title strong{
+      font-weight:800;
+      letter-spacing:.3px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-title span{
+      font-size:.9rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
 
-        .meta {
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 12px;
-        }
+    .btn{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius:999px;
+      font-weight:600;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      transition: transform .12s ease, background .12s ease;
+      cursor: pointer;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.06); }
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:#0b1022;
+      box-shadow: var(--shadow-md);
+    }
+    .btn.primary:hover{ transform: translateY(-1px); }
 
-        ul {
-            margin-top: 8px;
-            padding-left: 20px;
-        }
+    main{ padding: 56px 0 64px; }
 
-        a.button {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 10px 16px;
-            background: #22c55e;
-            color: #020617;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 8px;
-        }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:6px 12px;
+      border-radius:999px;
+      background: rgba(125,241,201,.12);
+      color: var(--brand-2);
+      font-weight:600;
+      font-size:.9rem;
+    }
 
-        a.button:hover {
-            background: #16a34a;
-        }
+    h1{
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      margin: 14px 0 10px;
+      letter-spacing: .2px;
+    }
+    .lead{
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0;
+    }
 
-        footer {
-            margin-top: 48px;
-            font-size: 13px;
-            color: #64748b;
-        }
-    </style>
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .release{
+      background: linear-gradient(180deg,#151a3a,#0f142f);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .release::before{
+      content:"";
+      position:absolute;
+      inset: -2px;
+      background:
+        radial-gradient(500px 140px at 20% 0%, rgba(103,182,255,.14), transparent 60%),
+        radial-gradient(500px 160px at 80% 10%, rgba(125,241,201,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .release > * { position: relative; }
+
+    .release-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .release h2{
+      margin:0;
+      font-size: 1.25rem;
+      letter-spacing: .2px;
+    }
+    .kicker{
+      font-size:.85rem;
+      letter-spacing:.25px;
+      color: var(--brand-2);
+      font-weight:700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .meta{
+      font-size: .95rem;
+      color: #9aa3cb;
+      margin: 6px 0 0;
+    }
+
+    ul{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    li{ margin: 6px 0; }
+
+    .actions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    a.download{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius:999px;
+      font-weight:700;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:#0b1022;
+      box-shadow: var(--shadow-md);
+      transition: transform .12s ease;
+    }
+    a.download:hover{ transform: translateY(-1px); }
+
+    .small-note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    footer{
+      padding: 36px 0 64px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+    }
+
+    .footgrid{
+      display:grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 24px;
+      align-items:start;
+    }
+    .copyright{
+      color:#9aa3cb;
+      font-size:.92rem;
+      margin: 10px 0 0;
+    }
+    footer strong{ font-weight:800; }
+    footer p{ margin: 8px 0; color: var(--muted); }
+    footer a{ opacity:.9; }
+    footer a:hover{ opacity:1; }
+
+    @media (max-width: 980px){
+      .footgrid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px){
+      .nav{ flex-direction: column; height:auto; padding: 12px 0; }
+      main{ padding: 42px 0 54px; }
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>SimpleTag – App Releases</h1>
-<p>Official APK releases for manual installation and testing.</p>
+<header>
+  <div class="container nav">
+    <!-- Brand now links to main page -->
+    <a class="brand" href="index.html" aria-label="Zur Startseite">
+      <div class="logo" aria-hidden="true"></div>
+      <div class="brand-title">
+        <strong>SimpleTag</strong>
+        <span>APK Releases</span>
+      </div>
+    </a>
 
-<div class="release">
-    <h2>Version 1.0</h2>
-    <div class="meta">
-        Version Code: 1 · Released: 2026-01-03
+    <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <!-- Website button goes to main page -->
+      <a class="btn" href="https://alhary.github.io/simpletag.html">Zur Main Page</a>
+      <a class="btn primary" href="#releases">Releases</a>
     </div>
+  </div>
+</header>
 
-    <ul>
+<main class="container" id="releases">
+
+  <h1>SimpleTag – App Releases</h1>
+  <p class="lead">Offizielle APK-Releases</p>
+
+  <div class="grid">
+
+    <article class="release">
+      <div class="kicker">Release</div>
+
+      <div class="release-head">
+        <h2>Version 1.0</h2>
+        <span class="btn" style="pointer-events:none; opacity:.9;">
+          VC 1 · 2026-01-03
+        </span>
+      </div>
+
+      <p class="meta">Version Code: 1 · Released: 2026-01-03</p>
+
+      <ul>
         <li>Initial test release</li>
         <li>BLE background scanning with adaptive duty cycle</li>
         <li>Lost / found detection</li>
         <li>Community crowd-finding support</li>
-    </ul>
+      </ul>
 
-    <a class="button"
-       href="app-release.apk"
-       download>
-        Download APK
-    </a>
-</div>
+      <div class="actions">
+        <a class="download" href="app-release.apk" download>
+          ⬇ Download APK
+        </a>
+      </div>
+
+    </article>
+
+  </div>
+</main>
 
 <footer>
-    © 2026 SimpleTag · Experimental / Test builds · Install at your own risk
+  <div class="container footgrid">
+    <div>
+      <div class="brand" style="margin-bottom:10px">
+        <div class="logo" aria-hidden="true"></div>
+        <strong>SimpleTag</strong>
+      </div>
+      <p class="copyright">© <span id="year"></span> SimpleTag. Alle Rechte vorbehalten.</p>
+    </div>
+
+    <div>
+      <strong>Rechtliches</strong>
+      <p><a href="https://alhary.github.io/impressum.html">Impressum</a></p>
+      <p><a href="https://alhary.github.io/datenschutz.html">Datenschutz</a></p>
+    </div>
+
+    <div>
+      <strong>Kontakt</strong>
+      <p><a href="alharyengineering@gmail.com">alharyengineering@gmail.com</a></p>
+    </div>
+  </div>
 </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
+```
